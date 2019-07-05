@@ -1,0 +1,50 @@
+/* ------------------------ */
+/* TYPOGRAPHY */
+/* ------------------------ */
+body {
+	font-family: var(--font-family-text);
+	font-weight: var(--font-weight-regular);
+	font-size: var(--font-size-16);
+	text-size-adjust: 100%;
+	text-rendering: optimizeLegibility;
+	line-height: 1;
+	color: var(--color-white);
+}
+
+/*-- headings --*/
+h1,
+h2,
+h3 {
+	font-family: var(--font-family-header);
+	font-weight: var(--font-weight-light);
+	text-transform: uppercase;
+}
+
+h4,
+h5 {
+	font-weight: var(--font-weight-medium);
+}
+
+h1 {
+	color: var(--color-primary);
+	font-size: 200%;
+	margin-top: 0;
+	margin-bottom: 20px;
+	word-spacing: 4px;
+	letter-spacing: 1px;
+}
+
+h2 {
+	font-size: 180%;
+	margin-bottom: 16px;
+	word-spacing: 2px;
+	letter-spacing: 1px;
+}
+h3 {
+	font-size: 110%;
+	margin-bottom: 15px;
+}
+/*-- paragraph --*/
+p {
+	line-height: 1.5;
+}

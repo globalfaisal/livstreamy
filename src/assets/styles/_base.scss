@@ -1,0 +1,51 @@
+/* css variables */
+:root {
+	/*-- colors --*/
+	--color-primary: #fece2f;
+	--color-secondary: #e7e7e7;
+
+	--color-white: #fdfdfd;
+	--color-black: #111111;
+	--color-dimgrey: #1c1c1c;
+	--color-grey: #272727;
+
+	--color-blue: #4dbaf6;
+	--colo-lightblue: #c9f3ff;
+	--color-bluegreyshade: #24232b;
+
+	/*-- fonts --*/
+	--font-family-header: 'Poppins', sans-serif;
+	--font-family-text: 'Lato', sans-serif;
+
+	--font-size-10: 10px;
+	--font-size-12: 12px;
+	--font-size-14: 14px;
+	--font-size-16: 16px;
+
+	--font-weight-medium: 500;
+	--font-weight-regular: 400;
+	--font-weight-light: 300;
+}
+
+/* ------------------------ */
+/* BASE RULES */
+/* ------------------------ */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	background-color: var(--color-black);
+}
+
+.wrapper {
+	min-width: 100%;
+	width: 100%;
+	main.main {
+		margin: 40px 30px;
+	}
+}
