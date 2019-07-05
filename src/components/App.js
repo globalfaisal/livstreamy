@@ -13,9 +13,9 @@ import Header from './Header/Header';
 const App = () => {
   return (
     <div className="app-wrapper">
-      <Header />
-      <main className="main-content">
-        <BrowserRouter>
+      <BrowserRouter>
+        <Header />
+        <main className="main-content">
           <Switch>
             <Route path="/streams/new" component={StreamCreate} />
             <Route path="/streams/edit" component={StreamEdit} />
@@ -25,8 +25,8 @@ const App = () => {
             <Route path="/" exact component={StreamList} />
             <Redirect from="*" to="/" />
           </Switch>
-        </BrowserRouter>
-      </main>
+        </main>
+      </BrowserRouter>
     </div>
   );
 };
