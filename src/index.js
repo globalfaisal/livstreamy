@@ -1,11 +1,18 @@
 /* -- framework -- */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+
+import store from './store';
+import App from './components/App';
 
 /* -- styles -- */
 import 'semantic-ui-css/semantic.min.css';
 import './assets/styles/main.scss';
-/* -- custom components -- */
-import App from './components/App';
 
-ReactDOM.render(<App />, document.querySelector('#root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.querySelector('#root')
+);
