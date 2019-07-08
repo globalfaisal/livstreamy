@@ -1,11 +1,15 @@
-export const signIn = () => {
+import { authTypes } from './types';
+
+export const signIn = userProfile => {
   return {
-    type: 'SIGN_IN',
+    type: authTypes.SIGN_IN,
+    payload: userProfile,
   };
 };
 
 export const signOut = () => {
   return {
-    type: 'SIGN_OUT',
+    type: authTypes.SIGN_OUT,
+    payload: {},
   };
 };

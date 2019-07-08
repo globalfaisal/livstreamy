@@ -29,8 +29,17 @@ class GoogleAuth extends Component {
 
   onAuthChange = isSignedIn => {
     // dispatch the appropriate auth actions
-    if (isSignedIn) this.props.signIn();
-    else this.props.signOut();
+    if (isSignedIn) {
+      // get logedin user profile
+      const profile = this.auth.currentUser.get().getBasicProfile();
+      const userProfile = {
+        id: profile.getId(),
+        name: profile.getName(),
+        email: profile.getEmail(),
+        imageUrl: profile.getImageUrl(),
+      };
+      this.props.signIn(userProfile);
+    } else this.props.signOut();
   };
 
   onSignInClick = () => {
@@ -57,7 +66,9 @@ class GoogleAuth extends Component {
   }
 }
 
-const mapStateToProps = state => ({ isSignedIn: state.auth.isSignedIn });
+const mapStateToProps = state => ({
+  isSignedIn: state.auth.isSignedIn,
+});
 
 const mapDispatchToProps = {
   signIn,
