@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
+import authReducer from './authReducer';
 
 export default combineReducers({
-  isSignedIn: () => 'enter code here..!',
+  auth: authReducer,
 });

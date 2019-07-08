@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { signIn, signOut } from '../../actions/authActions';
 
 class GoogleAuth extends Component {
-  state = {
-    isSignedIn: false,
-  };
   componentDidMount() {
     // load client and auth2 from google api
     window.gapi.load('client:auth2', () => {
@@ -17,14 +17,20 @@ class GoogleAuth extends Component {
         .then(() => {
           // get the auth2 from gapi
           this.auth = window.gapi.auth2.getAuthInstance();
-          // listen for google auth signIn changes
+
+          // initial dispatch of the app auth state
+          this.onAuthChange(this.auth.isSignedIn.get());
+
+          // listen for future auth status changes
           this.auth.isSignedIn.listen(this.onAuthChange);
         });
     });
   }
 
-  onAuthChange = () => {
-    this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+  onAuthChange = isSignedIn => {
+    // dispatch the appropriate auth actions
+    if (isSignedIn) this.props.signIn();
+    else this.props.signOut();
   };
 
   onSignInClick = () => {
@@ -36,7 +42,7 @@ class GoogleAuth extends Component {
   };
 
   render() {
-    const { isSignedIn } = this.state;
+    const { isSignedIn } = this.props;
     if (!this.props.children) return null;
     // render the children prop passed as function
     return (
@@ -51,4 +57,14 @@ class GoogleAuth extends Component {
   }
 }
 
-export default GoogleAuth;
+const mapStateToProps = state => ({ isSignedIn: state.auth.isSignedIn });
+
+const mapDispatchToProps = {
+  signIn,
+  signOut,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GoogleAuth);
