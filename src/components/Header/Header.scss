@@ -3,14 +3,13 @@ header {
 	padding: 0 20px;
 	background: var(--color-dimgrey);
 
-	.content {
+	.header-content {
 		// border: 1px solid red;
 		flex: 1;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		height: 100%;
-		color: var(--color-primary);
 		font-size: 14px;
 		font-weight: var(--font-weight-light);
 	}
