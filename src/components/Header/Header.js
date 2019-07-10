@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 /* --- custom components --- */
+import Profile from './../Profile/Profile';
 import Login from './../Login/Login';
 
 /* --- image --- */
@@ -25,6 +26,7 @@ const Header = props => {
           </Link>
         </div>
         <nav className="header-navbar">
+          <Profile />
           <Login />
         </nav>
         {props.children}

@@ -1,6 +1,12 @@
+/* --- framework --- */
 import React, { Fragment } from 'react';
-import GoogleAuth from '../Auth/GoogleAuth';
+import GoogleAuth from '../GoogleAuth/GoogleAuth';
+
+/* --- components --- */
 import { Button, Popup, Icon } from 'semantic-ui-react';
+
+/* --- styles --- */
+import './Login.scss';
 
 const Login = () => {
   return (

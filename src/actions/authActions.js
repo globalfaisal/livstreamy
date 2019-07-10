@@ -10,6 +10,6 @@ export const signIn = userProfile => {
 export const signOut = () => {
   return {
     type: authTypes.SIGN_OUT,
-    payload: {},
+    payload: null,
   };
 };

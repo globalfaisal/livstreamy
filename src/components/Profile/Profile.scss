@@ -1,0 +1,26 @@
+.profile {
+	height: 50px;
+	width: 200px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	.profile-avatar {
+		display: flex;
+		align-items: center;
+		border-right: 2px solid var(--color-grey);
+		padding-right: 20px;
+		margin-right: 10px;
+		.profile-avatar-image {
+			height: 30px;
+			width: 30px;
+			border-radius: 50%;
+		}
+		.profile-avatar-name {
+			color: red;
+			margin-left: 10px;
+			font-size: 14px;
+			color: var(--color-secondary);
+			font-weight: var(--font-weight-regular);
+		}
+	}
+}

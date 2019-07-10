@@ -2,7 +2,7 @@ import { authTypes } from '../actions/types';
 
 const INITIAL_STATE = {
   isSignedIn: null,
-  user: {},
+  user: null,
 };
 
 export default (state = INITIAL_STATE, action) => {
