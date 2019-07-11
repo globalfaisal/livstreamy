@@ -2,7 +2,7 @@
 :root {
 	/*-- colors --*/
 	--color-primary: #fece2f;
-	--color-secondary: #dddddd;
+	--color-secondary: #adadad;
 
 	--color-white: #fdfdfd;
 	--color-black: #111111;
@@ -10,7 +10,7 @@
 	--color-grey: #272727;
 
 	--color-blue: #4dbaf6;
-	--colo-lightblue: #c9f3ff;
+	--color-lightblue: #6d8991;
 	--color-bluegreyshade: #24232b;
 
 	/*-- fonts --*/
@@ -47,5 +47,26 @@ body {
 	width: 100%;
 	main.main-content {
 		margin: 0px 30px;
+	}
+}
+
+.ui {
+	input,
+	textarea,
+	[type='checkbox'].hidden + label::before {
+		border-radius: 0 !important;
+	}
+	[type='checkbox'].hidden + label,
+	[type='radio'].hidden + label {
+		&:before {
+			background: var(--color-black) !important;
+			border: 1px solid var(--color-secondary) !important;
+		}
+		&:after {
+			background: var(--color-secondary) !important;
+		}
+	}
+	button {
+		border-radius: 0 !important;
 	}
 }

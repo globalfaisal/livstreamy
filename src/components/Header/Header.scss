@@ -1,26 +1,47 @@
 header {
 	height: 50px;
-	padding: 0 20px;
+	padding: 0 0 0 20px;
 	background: var(--color-dimgrey);
 
-	.header-content {
-		// border: 1px solid red;
-		flex: 1;
+	nav.navbar {
 		display: flex;
-		justify-content: space-between;
+		justify-content: flex-end;
 		align-items: center;
 		height: 100%;
 		font-size: 14px;
 		font-weight: var(--font-weight-light);
-		.header-navbar {
-			height: 100%;
+	}
+	.nav-links {
+		height: 100%;
+		flex: 1;
+		display: flex;
+		justify-content: flex-end;
+		margin: 0 20px;
+		a.nav-link {
 			display: flex;
 			align-items: center;
+			margin-bottom: -1px;
+			color: var(--color-secondary);
+			font-family: var(--font-family-header);
+			font-weight: var(--font-weight-light);
+			letter-spacing: 0;
+			border-bottom: 2px solid transparent;
+			transition: all 0.28s ease-in-out;
+			&:not(:first-child) {
+				margin-left: 16px;
+			}
+			&:hover {
+				color: var(--color-lightblue);
+				border-color: var(--color-lightblue);
+			}
+			&.left {
+				margin-right: auto;
+			}
 		}
 	}
 	.brand {
-		flex: 1;
 		max-width: 200px;
+		margin-right: auto;
 		.brand-link {
 			display: flex;
 			align-items: center;

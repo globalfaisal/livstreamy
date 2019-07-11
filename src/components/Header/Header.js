@@ -1,12 +1,10 @@
 /* --- framework --- */
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-/* --- custom components --- */
+/* --- components --- */
+import GoogleAuth from '../GoogleAuth/GoogleAuth';
 import Profile from './../Profile/Profile';
-import Login from './../Login/Login';
-
 /* --- image --- */
 import logo from '../../assets/images/logo-color-dark.svg';
 
@@ -14,9 +12,28 @@ import logo from '../../assets/images/logo-color-dark.svg';
 import './Header.scss';
 
 const Header = props => {
+  const renderLogin = () => {
+    return (
+      <GoogleAuth>
+        {({ isSignedIn, onSignIn, onSignOut }) => (
+          <Fragment>
+            {!isSignedIn ? (
+              <Link to="#" onClick={onSignIn} className="nav-link">
+                Log In
+              </Link>
+            ) : (
+              <Link to="#" onClick={onSignOut} className="nav-link">
+                Log Out
+              </Link>
+            )}
+          </Fragment>
+        )}
+      </GoogleAuth>
+    );
+  };
   return (
     <header className="main-header">
-      <div className="header-content">
+      <nav className="navbar">
         <div className="brand">
           <Link to="/" className="brand-link">
             <div className="brand-logo">
@@ -25,18 +42,19 @@ const Header = props => {
             <div className="brand-name">LivStream</div>
           </Link>
         </div>
-        <nav className="header-navbar">
-          <Profile />
-          <Login />
-        </nav>
-        {props.children}
-      </div>
+        <div className="nav-links">
+          <Link to="/streams" className="nav-link ">
+            Browse
+          </Link>
+          <Link to="/streams/new" className="nav-link left">
+            Go Live
+          </Link>
+          {renderLogin()}
+        </div>
+        <Profile />
+      </nav>
     </header>
   );
-};
-Header.propTypes = {
-  logo: PropTypes.string,
-  brandName: PropTypes.string,
 };
 
 export default Header;

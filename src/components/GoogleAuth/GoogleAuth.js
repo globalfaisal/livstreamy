@@ -1,6 +1,8 @@
+/* -- libs -- */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+/* -- action creators -- */
 import { signIn, signOut } from '../../actions/authActions';
 
 class GoogleAuth extends Component {
