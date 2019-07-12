@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Fields, reduxForm } from 'redux-form';
 
 /* --- action creators --- */
-import { createStream, deleteStream } from '../../../actions/streamActions';
+import { createStream } from '../../../actions/streamsActions';
 
 /* --- components --- */
 import FieldErrorMessage from '../../UI/FieldErrorMessage/FieldErrorMessage';
@@ -13,12 +13,12 @@ import { Form, Button, Icon } from 'semantic-ui-react';
 /* --- styles --- */
 import './StreamCreate.scss';
 
-class StreamCreate extends React.Component {
-  renderFieldError = ({ touched, error, active }) => {
+const StreamCreate = props => {
+  const renderFieldError = ({ touched, error, active }) => {
     return touched && error && !active && <FieldErrorMessage message={error} />;
   };
 
-  renderInput = ({ title, description, terms }) => (
+  const renderInput = ({ title, description, terms }) => (
     <React.Fragment>
       <Form.Input
         {...title.input}
@@ -31,7 +31,7 @@ class StreamCreate extends React.Component {
             : ''
         }`}
       />
-      {this.renderFieldError(title.meta)}
+      {renderFieldError(title.meta)}
       <Form.TextArea
         {...description.input}
         required
@@ -45,7 +45,7 @@ class StreamCreate extends React.Component {
             : ''
         }`}
       />
-      {this.renderFieldError(description.meta)}
+      {renderFieldError(description.meta)}
 
       <Form.Checkbox
         {...terms.input}
@@ -56,48 +56,46 @@ class StreamCreate extends React.Component {
     </React.Fragment>
   );
 
-  onSubmit = formData => {
+  const onSubmit = formData => {
     // return input fields value contains only white space
     if (!formData.title.trim() || !formData.description.trim()) return;
     // dispatch the form data
-    this.props.createStream(formData);
+    props.createStream(formData);
   };
 
-  render() {
-    return (
-      <div className="stream-create ui container">
-        <section className="intro-section">
-          <h1>Do it live! </h1>
-          <p className="long-text">
-            Live streaming is an easy way to reach your audience in real time.
-            <br />
-            hosting a live Q&A session ? streaming a video game ? or teaching a
-            class? <span> Go Live Now 📡 </span>
-          </p>
-        </section>
-        <section className="form-section">
-          <Form
-            onSubmit={this.props.handleSubmit(this.onSubmit)}
-            inverted
-            className="streamCreate-form "
-          >
-            <Fields
-              names={['title', 'description', 'terms']}
-              component={this.renderInput}
-            />
+  return (
+    <div className="stream-create ui container">
+      <section className="intro-section">
+        <h1>Do it live! </h1>
+        <p className="long-text">
+          Live streaming is an easy way to reach your audience in real time.
+          <br />
+          hosting a live Q&A session ? streaming a video game ? or teaching a
+          class? <span> Go Live Now 📡 </span>
+        </p>
+      </section>
+      <section className="form-section">
+        <Form
+          onSubmit={props.handleSubmit(onSubmit)}
+          inverted
+          className="streamCreate-form "
+        >
+          <Fields
+            names={['title', 'description', 'terms']}
+            component={renderInput}
+          />
 
-            <Button type="submit" animated className="btn-submit primary">
-              <Button.Content visible>Submit</Button.Content>
-              <Button.Content hidden>
-                <Icon name="arrow right" />
-              </Button.Content>
-            </Button>
-          </Form>
-        </section>
-      </div>
-    );
-  }
-}
+          <Button type="submit" animated className="btn-submit primary">
+            <Button.Content visible>Submit</Button.Content>
+            <Button.Content hidden>
+              <Icon name="arrow right" />
+            </Button.Content>
+          </Button>
+        </Form>
+      </section>
+    </div>
+  );
+};
 
 const validate = formValues => {
   const error = {};
@@ -112,7 +110,7 @@ const validate = formValues => {
   return error;
 };
 
-const mapDispatchToProps = { createStream, deleteStream };
+const mapDispatchToProps = { createStream };
 
 const formWrapped = reduxForm({
   form: 'streamCreate',
