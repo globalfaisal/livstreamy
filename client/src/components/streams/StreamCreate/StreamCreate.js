@@ -1,6 +1,10 @@
 /* --- libs --- */
 import React from 'react';
+import { connect } from 'react-redux';
 import { Fields, reduxForm } from 'redux-form';
+
+/* --- action creators --- */
+import { createStream, deleteStream } from '../../../actions/streamActions';
 
 /* --- components --- */
 import FieldErrorMessage from '../../UI/FieldErrorMessage/FieldErrorMessage';
@@ -53,10 +57,10 @@ class StreamCreate extends React.Component {
   );
 
   onSubmit = formData => {
-    const { title, description, terms } = formData;
-    // check that there's no white space only value.
-    if (!title.trim() || !description.trim()) return;
-    // All good!
+    // return input fields value contains only white space
+    if (!formData.title.trim() || !formData.description.trim()) return;
+    // dispatch the form data
+    this.props.createStream(formData);
   };
 
   render() {
@@ -108,7 +112,14 @@ const validate = formValues => {
   return error;
 };
 
-export default reduxForm({
+const mapDispatchToProps = { createStream, deleteStream };
+
+const formWrapped = reduxForm({
   form: 'streamCreate',
   validate,
 })(StreamCreate);
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(formWrapped);

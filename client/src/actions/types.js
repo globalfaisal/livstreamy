@@ -2,3 +2,11 @@ export const authTypes = {
   SIGN_IN: 'SIGN_IN',
   SIGN_OUT: 'SIGN_OUT',
 };
+
+export const streamsTypes = {
+  FETCH_STREAMS: 'GET_STREAMS',
+  FETCH_STREAM: 'GET_STREAM',
+  CREATE_STREAM: 'CREATE_STREAM',
+  EDIT_STREAM: 'EDIT_STREAM',
+  DELETE_STREAM: 'DELETE_STREAM',
+};
