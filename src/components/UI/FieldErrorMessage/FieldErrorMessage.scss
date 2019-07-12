@@ -1,0 +1,11 @@
+.field-error-message {
+	margin-top: -10px;
+	margin-bottom: 10px;
+	padding: 4px 1px;
+
+	p.error-message {
+		font-weight: var(--font-weight-light);
+		font-size: var(--font-size-12);
+		color: var(--color-danger);
+	}
+}

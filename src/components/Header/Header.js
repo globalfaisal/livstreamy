@@ -44,9 +44,9 @@ const Header = props => {
         </div>
         <div className="nav-links">
           <Link to="/streams" className="nav-link ">
-            Browse
+            Explore
           </Link>
-          <Link to="/streams/new" className="nav-link left">
+          <Link to="/streams/live" className="nav-link left">
             Go Live
           </Link>
           {renderLogin()}

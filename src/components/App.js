@@ -17,7 +17,7 @@ const App = () => {
         <Header />
         <main className="main-content">
           <Switch>
-            <Route path="/streams/new" component={StreamCreate} />
+            <Route path="/streams/live" component={StreamCreate} />
             <Route path="/streams/edit" component={StreamEdit} />
             <Route path="/streams/delete" component={StreamDelete} />
             <Route path="/streams/:id" component={StreamWatch} />} />

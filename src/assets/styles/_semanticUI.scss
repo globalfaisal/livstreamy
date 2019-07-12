@@ -1,0 +1,19 @@
+// Customize the semantic ui components
+.ui {
+	input,
+	textarea,
+	[type='checkbox'].hidden + label::before {
+		border-radius: 0 !important;
+	}
+
+	button {
+		border-radius: 0 !important;
+		font-weight: var(--font-weight-medium) !important;
+		&.primary {
+			background: #04bd95 !important;
+			&:hover {
+				background: #08daac !important;
+			}
+		}
+	}
+}

@@ -48,3 +48,11 @@ h3 {
 p {
 	line-height: 1.5;
 }
+.long-text {
+	width: 70%;
+	line-height: 145%;
+}
+
+::-webkit-input-placeholder {
+	color: #d8d8d8 !important;
+}

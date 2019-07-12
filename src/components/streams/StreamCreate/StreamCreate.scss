@@ -1,0 +1,17 @@
+.stream-create {
+	padding: 80px 0;
+	.intro-section {
+		color: var(--color-secondary);
+
+		margin-bottom: 20px;
+		p > span {
+			color: var(--color-lightblue);
+		}
+	}
+	.form-section {
+		max-width: 480px;
+	}
+	.btn-submit {
+		float: right;
+	}
+}

@@ -1,7 +1,8 @@
 /* css variables */
 :root {
 	/*-- colors --*/
-	--color-primary: #fece2f;
+	--color-primary: #03d8aa;
+	// --color-primary: #fece2f;
 	--color-secondary: #adadad;
 
 	--color-white: #fdfdfd;
@@ -12,6 +13,10 @@
 	--color-blue: #4dbaf6;
 	--color-lightblue: #6d8991;
 	--color-bluegreyshade: #24232b;
+
+	--color-success: #22bb33;
+	--color-warning: #f0ad4e;
+	--color-danger: #af3d3b;
 
 	/*-- fonts --*/
 	--font-family-header: 'Poppins', sans-serif;
@@ -47,26 +52,5 @@ body {
 	width: 100%;
 	main.main-content {
 		margin: 0px 30px;
-	}
-}
-
-.ui {
-	input,
-	textarea,
-	[type='checkbox'].hidden + label::before {
-		border-radius: 0 !important;
-	}
-	[type='checkbox'].hidden + label,
-	[type='radio'].hidden + label {
-		&:before {
-			background: var(--color-black) !important;
-			border: 1px solid var(--color-secondary) !important;
-		}
-		&:after {
-			background: var(--color-secondary) !important;
-		}
-	}
-	button {
-		border-radius: 0 !important;
 	}
 }
