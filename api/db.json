@@ -1,3 +1,100 @@
 {
-	"streams": []
+  "streams": [
+    {
+      "title": "Ask me anything you want!",
+      "description": "Pssstttt...It's Q&A time, send your questions @twiter_handle. 👏",
+      "terms": true,
+      "id": 1
+    },
+    {
+      "title": "Friday fun with Fortnite 🐱‍👤",
+      "description": "Watch me kicking ass in fortnite!! ",
+      "terms": true,
+      "id": 2
+    },
+    {
+      "title": "Join us live with prof. Tony Gee",
+      "description": "In this live session we're going to discuss issues about 'How climate change is effecting the third world'.",
+      "terms": true,
+      "id": 3
+    },
+    {
+      "title": "Learn how to be a greate UI Designer 👌",
+      "description": "Watch me build a UI dashboard concept from scratch.",
+      "terms": true,
+      "id": 4
+    },
+    {
+      "title": "Live musically event in london",
+      "description": "Our live musically event is here once again. Watch it live and share the link with your friends.",
+      "terms": true,
+      "id": 5
+    },
+    {
+      "description": "I'll share my top 20 summer escape places. ",
+      "terms": true,
+      "title": "My top 20 summer escape locations ",
+      "id": 6
+    },
+    {
+      "title": "WHAT IS MADE OF 🤷‍♀️",
+      "description": "Let's discover together ",
+      "terms": true,
+      "id": 7
+    },
+    {
+      "description": "Enjoy live hip hop playlist",
+      "terms": true,
+      "title": "24/7 Hip Hop",
+      "id": 8
+    },
+    {
+      "terms": true,
+      "title": "How to learn coding in 4 months",
+      "description": "Learning to code shouldn't be hard! I will give you the top tips and tricks to learn coding fast",
+      "id": 9
+    },
+    {
+      "title": "Sick make-up tutorial",
+      "terms": true,
+      "description": "lorem ipsum bla bla",
+      "id": 10
+    },
+    {
+      "title": "Launching my app",
+      "description": "Learn how to launch your web app ",
+      "terms": true,
+      "id": 12
+    },
+    {
+      "title": "drake talks",
+      "description": "Drake fans are welcome!",
+      "terms": true,
+      "id": 13
+    },
+    {
+      "title": "Let's do another live session",
+      "description": "Turn on this Friday at 16'. I'll be talking a lot of shit 💩",
+      "terms": true,
+      "id": 14
+    },
+    {
+      "title": "Cofeve Time",
+      "description": "I'll be analyzing the next election's winner!",
+      "terms": true,
+      "id": 15
+    },
+    {
+      "title": "ddfdfdfa",
+      "description": "dafdfdfdf",
+      "terms": true,
+      "id": 16
+    },
+    {
+      "terms": true,
+      "title": "dafadlakdfla",
+      "description": "kldafjla;fja;ldfjadsf",
+      "id": 17
+    }
+  ]
 }
