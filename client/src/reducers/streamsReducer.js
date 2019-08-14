@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import { streamsTypes } from '../actions/types';
+
 const INITIAL_STATE = {};
 
 export default (state = INITIAL_STATE, action) => {
@@ -13,7 +14,7 @@ export default (state = INITIAL_STATE, action) => {
     case streamsTypes.EDIT_STREAM:
       return { ...state, [action.payload.id]: action.payload };
     case streamsTypes.DELETE_STREAM:
-      return _.omit(state, action.payload.id);
+      return _.omit(state, action.payload);
     default:
       return state;
   }

@@ -1,7 +1,7 @@
 /* --- libs --- */
 import React from 'react';
 import { connect } from 'react-redux';
-import { Fields, reduxForm } from 'redux-form';
+import { reduxForm, Fields } from 'redux-form';
 
 /* --- action creators --- */
 import { createStream } from '../../../actions/streamsActions';
@@ -23,6 +23,7 @@ const StreamCreate = props => {
       <Form.Input
         {...title.input}
         required
+        autoComplete="off"
         label="Title"
         placeholder="Ask me anything!"
         className={`${
@@ -36,7 +37,7 @@ const StreamCreate = props => {
         {...description.input}
         required
         label="Description"
-        placeholder="Pssstttt...It's Q&A time, send your questions @twiter_handle. 👏"
+        placeholder="Pssstttt...It's Q&A time, send your questions @twitter_handle. 👏"
         className={`${
           description.meta.touched &&
           description.meta.error &&
@@ -50,17 +51,24 @@ const StreamCreate = props => {
       <Form.Checkbox
         {...terms.input}
         label="I agree to the Terms and Conditions"
-        className={`${terms.meta.touched && terms.meta.error ? 'error' : ''}`}
         required
+        className={`${
+          terms.meta.touched && terms.meta.error && !description.meta.active
+            ? 'error'
+            : ''
+        }`}
       />
     </React.Fragment>
   );
 
-  const onSubmit = formData => {
-    // return input fields value contains only white space
-    if (!formData.title.trim() || !formData.description.trim()) return;
+  const onSubmit = formValues => {
+    // check that values are not only white space
+    if (!formValues.title.trim() || !formValues.description.trim()) return;
+
     // dispatch the form data
-    props.createStream(formData);
+    props.createStream(formValues).then(() => {
+      props.reset(); // resets form fields
+    });
   };
 
   return (
@@ -71,7 +79,10 @@ const StreamCreate = props => {
           Live streaming is an easy way to reach your audience in real time.
           <br />
           hosting a live Q&A session ? streaming a video game ? or teaching a
-          class? <span> Go Live Now 📡 </span>
+          class?
+          <span role="img" aria-label="live">
+            Go Live Now 📡
+          </span>
         </p>
       </section>
       <section className="form-section">
@@ -98,26 +109,26 @@ const StreamCreate = props => {
 };
 
 const validate = formValues => {
-  const error = {};
+  const errors = {};
 
-  if (!formValues.title) error.title = '☹ Title is required ';
+  if (!formValues.title) errors.title = 'Title is required ';
 
   if (!formValues.description)
-    error.description = '☹ Please provide descripton for your live stream';
+    errors.description = 'Provide descripton for your live stream';
 
-  if (!formValues.terms) error.terms = '☹ You must accept the terms!';
+  if (!formValues.terms) errors.terms = 'You must accept the terms!';
 
-  return error;
+  return errors;
 };
 
 const mapDispatchToProps = { createStream };
 
-const formWrapped = reduxForm({
-  form: 'streamCreate',
-  validate,
+const streamCreateWrapped = reduxForm({
+  form: 'stream-create-form', // unique form name
+  validate: validate,
 })(StreamCreate);
 
 export default connect(
   null,
   mapDispatchToProps
-)(formWrapped);
+)(streamCreateWrapped);

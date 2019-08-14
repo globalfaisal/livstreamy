@@ -10,8 +10,14 @@
 	}
 	.form-section {
 		max-width: 480px;
+		margin-top: 50px;
+		form.streamCreate-form {
+			display: flex;
+			flex-direction: column;
+			// border: 1px solid red;
+		}
 	}
 	.btn-submit {
-		float: right;
+		align-self: flex-end;
 	}
 }

@@ -20,16 +20,17 @@ class StreamList extends React.Component {
     const { streams } = this.props;
     if (streams.length === 0) return null;
     return (
-      <div className="stream-list container">
+      <ul className="stream-list container">
         {streams.map(stream => (
-          <PreviewCard
-            key={stream.id}
-            thumbnail={vidPlaceholder}
-            title={stream.title}
-            description={stream.description}
-          />
+          <li key={stream.id} className="stream-item">
+            <PreviewCard
+              thumbnail={vidPlaceholder}
+              title={stream.title}
+              description={stream.description}
+            />
+          </li>
         ))}
-      </div>
+      </ul>
     );
   };
   render() {
