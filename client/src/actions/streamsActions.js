@@ -23,7 +23,7 @@ export const createStream = formValues => async (dispatch, getState) => {
 
   const response = await streams.post('/streams', {
     ...formValues,
-    userId: user.id,
+    user: user,
   });
   dispatch({
     type: streamsTypes.CREATE_STREAM,

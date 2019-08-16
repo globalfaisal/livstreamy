@@ -4,15 +4,95 @@
 		border-radius: 0;
 		background: transparent;
 		box-shadow: none;
-		.image {
+		.content:first-child {
+			position: relative !important;
+			padding: 0;
+		}
+		.card-thumbnail {
 			border-radius: 0 !important;
+			img {
+				width: 100%;
+				height: 100%;
+			}
 		}
-		.header {
-			color: var(--color-white) !important;
-			font-size: var(--font-size-16) !important;
+		.meta {
+			padding: 6px 0;
+			.header {
+				color: var(--color-white) !important;
+				font-size: var(--font-size-16) !important;
+				margin: 4px 0 !important;
+			}
+			.description {
+				color: var(--color-secondary) !important;
+			}
+			.channel {
+				display: flex;
+				justify-content: space-between;
+				.profile {
+					padding: 0 3px;
+					justify-content: flex-start;
+					// border: 0;
+					display: inline-flex;
+					border: 0;
+					.profile-avatar {
+						height: 100%;
+					}
+					.profile-avatar-image {
+						height: 20px;
+						width: 20px;
+						border-radius: 50%;
+					}
+					.profile-avatar-name {
+						margin-left: 6px;
+						color: var(--color-lightblue);
+						font-size: var(--font-size-14);
+						font-family: var(--font-family-text);
+						font-weight: var(--font-weight-regular);
+					}
+				}
+				.channel-actions {
+					button {
+						padding: 5px;
+					}
+					.icon {
+						.edit {
+							color: var(--color-lightblue);
+						}
+						.trash {
+							color: var(--color-danger);
+						}
+					}
+				}
+			}
 		}
-		.description {
-			color: var(--color-secondary) !important;
+	}
+}
+
+.preview-card {
+	&:hover {
+		.card-thumbnail:before {
+			content: '';
+			display: block;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			background: var(--color-bluegreyshade);
+			opacity: 0.6;
+		}
+		.card-thumbnail:after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 54px;
+			height: 54px;
+			border-color: #202020;
+			border-style: solid;
+			border-width: 27px 0px 27px 54px;
+			border-color: transparent transparent transparent var(--color-white);
 		}
 	}
 }

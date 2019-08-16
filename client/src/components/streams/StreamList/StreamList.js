@@ -1,5 +1,5 @@
 /* --- libs --- */
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 /* --- action creators --- */
@@ -7,14 +7,32 @@ import { fetchStreams } from '../../../actions/streamsActions';
 
 /* --- components --- */
 import PreviewCard from '../../UI/PreviewCard/PreviewCard';
-import vidPlaceholder from '../../../assets/images/video-placeholder.png';
+import Profile from '../../Profile/Profile';
+import { Button } from 'semantic-ui-react';
 
+import vidPlaceholder from '../../../assets/images/video-placeholder.png';
 /* --- styles --- */
 import './StreamList.scss';
-class StreamList extends React.Component {
+
+class StreamList extends Component {
   componentDidMount() {
     this.props.fetchStreams();
   }
+  renderChannel = stream => {
+    const { currentUser } = this.props;
+    if (currentUser && currentUser.id === stream.user.id) {
+      return (
+        <Fragment>
+          <Profile user={stream.user} />
+          <div className="channel-actions">
+            <Button color="black" icon="edit outline" size="tiny" />
+            <Button color="black" icon="trash alternate outline" size="tiny" />
+          </div>
+        </Fragment>
+      );
+    }
+    return <Profile user={stream.user} />;
+  };
 
   renderList = () => {
     const { streams } = this.props;
@@ -27,6 +45,7 @@ class StreamList extends React.Component {
               thumbnail={vidPlaceholder}
               title={stream.title}
               description={stream.description}
+              channel={this.renderChannel(stream)}
             />
           </li>
         ))}
@@ -38,7 +57,10 @@ class StreamList extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ streams: Object.values(state.streams) });
+const mapStateToProps = state => ({
+  streams: Object.values(state.streams),
+  currentUser: state.auth.user,
+});
 const mapDispatchToProps = { fetchStreams };
 
 export default connect(

@@ -12,8 +12,16 @@ const PreviewCard = props => {
   return (
     <div className="preview-card">
       <Card>
-        <Image src={props.thumbnail} wrapped ui={false} />
         <Card.Content>
+          <Image
+            src={props.thumbnail}
+            wrapped
+            ui={false}
+            className="card-thumbnail"
+          />
+        </Card.Content>
+        <Card.Content className="meta">
+          <div className="channel">{props.channel}</div>
           <Card.Header as="h5">{props.title}</Card.Header>
           <Card.Description>{props.description}</Card.Description>
         </Card.Content>
@@ -26,6 +34,7 @@ PreviewCard.propTypes = {
   thumbnail: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  channel: PropTypes.node,
 };
 
 export default PreviewCard;

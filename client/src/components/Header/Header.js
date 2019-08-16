@@ -1,6 +1,7 @@
 /* --- framework --- */
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 /* --- components --- */
 import GoogleAuth from '../GoogleAuth/GoogleAuth';
@@ -51,10 +52,10 @@ const Header = props => {
           </Link>
           {renderLogin()}
         </div>
-        <Profile />
+        <Profile user={props.user} />
       </nav>
     </header>
   );
 };
-
-export default Header;
+const mapStateToProps = state => ({ user: state.auth.user });
+export default connect(mapStateToProps)(Header);

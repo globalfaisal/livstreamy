@@ -1,6 +1,6 @@
 /* -- libs -- */
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 /* --- styles --- */
 import './Profile.scss';
@@ -27,6 +27,8 @@ class Profile extends Component {
     return this.renderProfile();
   }
 }
+Profile.propTypes = {
+  user: PropTypes.object.isRequired,
+};
 
-const mapStateToProps = state => ({ user: state.auth.user });
-export default connect(mapStateToProps)(Profile);
+export default Profile;
