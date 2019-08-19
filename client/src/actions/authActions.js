@@ -1,3 +1,4 @@
+import history from '../utils/history/history';
 import { authTypes } from './types';
 
 export const signIn = userProfile => {
@@ -7,9 +8,12 @@ export const signIn = userProfile => {
   };
 };
 
-export const signOut = () => {
-  return {
+export const signOut = () => dispatch => {
+  dispatch({
     type: authTypes.SIGN_OUT,
     payload: null,
-  };
+  });
+
+  // redirect to the root route
+  history.push('/');
 };

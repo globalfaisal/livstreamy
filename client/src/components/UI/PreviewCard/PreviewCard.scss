@@ -69,8 +69,8 @@
 }
 
 .preview-card {
-	&:hover {
-		.card-thumbnail:before {
+	.card-thumbnail:hover {
+		&.card-thumbnail:before {
 			content: '';
 			display: block;
 			width: 100%;
@@ -80,7 +80,7 @@
 			background: var(--color-bluegreyshade);
 			opacity: 0.6;
 		}
-		.card-thumbnail:after {
+		&.card-thumbnail:after {
 			content: '';
 			display: block;
 			position: absolute;

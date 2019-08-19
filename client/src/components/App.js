@@ -17,17 +17,7 @@ const App = () => {
       <main className="main-content">
         <Switch>
           <ProtectedRoute path="/streams/live" component={StreamCreate} exact />
-          <ProtectedRoute path="/streams/edit" component={StreamEdit} exact />
-          <ProtectedRoute
-            path="/streams/edit/:id"
-            component={StreamEdit}
-            exact
-          />
-          <ProtectedRoute
-            path="/streams/delete"
-            component={StreamDelete}
-            exact
-          />
+          <Route path="/streams/edit/:id" component={StreamEdit} exact />
           <ProtectedRoute
             path="/streams/delete/:id"
             component={StreamDelete}

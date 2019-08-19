@@ -1,0 +1,23 @@
+.stream-edit {
+	padding: 80px 0;
+	.intro-section {
+		color: var(--color-secondary);
+
+		margin-bottom: 20px;
+		p > span {
+			color: var(--color-lightblue);
+		}
+	}
+	.form-section {
+		max-width: 480px;
+		margin-top: 50px;
+		form.streamCreate-form {
+			display: flex;
+			flex-direction: column;
+			// border: 1px solid red;
+		}
+	}
+	.btn-submit {
+		align-self: flex-end;
+	}
+}
