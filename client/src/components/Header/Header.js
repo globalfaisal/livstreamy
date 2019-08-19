@@ -52,10 +52,10 @@ const Header = props => {
           </Link>
           {renderLogin()}
         </div>
-        <Profile user={props.user} />
+        <Profile user={props.auth.user} />
       </nav>
     </header>
   );
 };
-const mapStateToProps = state => ({ user: state.auth.user });
+const mapStateToProps = state => ({ auth: state.auth });
 export default connect(mapStateToProps)(Header);

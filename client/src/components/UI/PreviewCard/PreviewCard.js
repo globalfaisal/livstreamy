@@ -21,7 +21,9 @@ const PreviewCard = props => {
           />
         </Card.Content>
         <Card.Content className="meta">
-          <div className="channel">{props.channel}</div>
+          <div className="meta-header">
+            {props.channel} {props.actions}
+          </div>
           <Card.Header as="h5">{props.title}</Card.Header>
           <Card.Description>{props.description}</Card.Description>
         </Card.Content>
@@ -35,6 +37,7 @@ PreviewCard.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   channel: PropTypes.node,
+  actions: PropTypes.node,
 };
 
 export default PreviewCard;

@@ -1,6 +1,7 @@
 /* --- libs --- */
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 /* --- action creators --- */
 import { fetchStreams } from '../../../actions/streamsActions';
@@ -10,7 +11,7 @@ import PreviewCard from '../../UI/PreviewCard/PreviewCard';
 import Profile from '../../Profile/Profile';
 import { Button } from 'semantic-ui-react';
 
-import vidPlaceholder from '../../../assets/images/video-placeholder.png';
+import vidPlaceholder from '../../../assets/images/video-placeholder.jpeg';
 /* --- styles --- */
 import './StreamList.scss';
 
@@ -18,20 +19,23 @@ class StreamList extends Component {
   componentDidMount() {
     this.props.fetchStreams();
   }
-  renderChannel = stream => {
-    const { currentUser } = this.props;
-    if (currentUser && currentUser.id === stream.user.id) {
+  renderControls = stream => {
+    const { auth } = this.props;
+    if (auth.isSignedIn && auth.user.id === stream.user.id) {
       return (
-        <Fragment>
-          <Profile user={stream.user} />
-          <div className="channel-actions">
-            <Button color="black" icon="edit outline" size="tiny" />
-            <Button color="black" icon="trash alternate outline" size="tiny" />
-          </div>
-        </Fragment>
+        <div className="stream-controls">
+          <Link to={`/streams/edit/${stream.id}`} className="btn-stream-edit">
+            <Button icon="edit outline" color="black" size="tiny" />
+          </Link>
+          <Link
+            to={`/streams/delete/${stream.id}`}
+            className="btn-stream-delete"
+          >
+            <Button icon="trash alternate outline" color="black" size="tiny" />
+          </Link>
+        </div>
       );
     }
-    return <Profile user={stream.user} />;
   };
 
   renderList = () => {
@@ -45,7 +49,8 @@ class StreamList extends Component {
               thumbnail={vidPlaceholder}
               title={stream.title}
               description={stream.description}
-              channel={this.renderChannel(stream)}
+              channel={<Profile user={stream.user} />}
+              actions={this.renderControls(stream)}
             />
           </li>
         ))}
@@ -59,7 +64,7 @@ class StreamList extends Component {
 
 const mapStateToProps = state => ({
   streams: Object.values(state.streams),
-  currentUser: state.auth.user,
+  auth: state.auth,
 });
 const mapDispatchToProps = { fetchStreams };
 

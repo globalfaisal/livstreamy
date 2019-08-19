@@ -1,4 +1,5 @@
 import streams from '../apis/streams';
+import history from '../utils/history/history';
 import { streamsTypes } from './types';
 
 export const fetchStreams = () => async dispatch => {
@@ -18,17 +19,21 @@ export const fetchStream = id => async dispatch => {
 };
 
 export const createStream = formValues => async (dispatch, getState) => {
-  // associate the created stream with the user
   const { user } = getState().auth;
 
   const response = await streams.post('/streams', {
     ...formValues,
     user: user,
   });
+
   dispatch({
     type: streamsTypes.CREATE_STREAM,
     payload: response.data,
   });
+
+  // Do some programmatic navigatio to
+  // get the user back to the root route
+  history.push('/streams');
 };
 
 export const editStream = (id, formValues) => async dispatch => {

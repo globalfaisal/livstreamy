@@ -66,9 +66,7 @@ const StreamCreate = props => {
     if (!formValues.title.trim() || !formValues.description.trim()) return;
 
     // dispatch the form data
-    props.createStream(formValues).then(() => {
-      props.reset(); // resets form fields
-    });
+    props.createStream(formValues);
   };
 
   return (

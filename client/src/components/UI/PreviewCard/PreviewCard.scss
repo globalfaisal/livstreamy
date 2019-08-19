@@ -25,7 +25,7 @@
 			.description {
 				color: var(--color-secondary) !important;
 			}
-			.channel {
+			.meta-header {
 				display: flex;
 				justify-content: space-between;
 				.profile {
@@ -50,7 +50,7 @@
 						font-weight: var(--font-weight-regular);
 					}
 				}
-				.channel-actions {
+				.stream-controls {
 					button {
 						padding: 5px;
 					}
