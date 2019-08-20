@@ -50,4 +50,7 @@ export const deleteStream = id => async dispatch => {
     type: streamsTypes.DELETE_STREAM,
     payload: id,
   });
+
+  // navigate back to the root route
+  history.push('/');
 };

@@ -6,7 +6,7 @@ class Portal extends Component {
   constructor() {
     super();
     this.el = document.createElement('div');
-    this.el.classList.add('portal-container');
+    this.el.classList.add('portal-content');
   }
 
   componentDidMount() {

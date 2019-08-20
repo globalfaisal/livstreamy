@@ -1,0 +1,31 @@
+.stream-delete {
+	display: flex;
+	width: 480px;
+	align-items: center;
+	color: var(--color-bluegreyshade);
+	& > .image-wrap {
+		width: 150px;
+		height: 150px;
+
+		img {
+			height: 100%;
+		}
+	}
+	& > .content {
+		margin-left: 20px;
+		h3 {
+			margin-bottom: 0;
+		}
+		p {
+			font-weight: 600;
+			color: var(--color-lightblue);
+		}
+		.actions {
+			margin-top: 30px;
+			.btn-delete {
+				background: var(--color-danger);
+				color: #fff;
+			}
+		}
+	}
+}

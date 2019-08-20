@@ -10,3 +10,8 @@ export const streamsTypes = {
   EDIT_STREAM: 'EDIT_STREAM',
   DELETE_STREAM: 'DELETE_STREAM',
 };
+
+export const modalTypes = {
+  OPEN_MODAL: 'OPEN_MODAL',
+  CLOSE_MODAL: 'CLOSE_MODAL',
+};
