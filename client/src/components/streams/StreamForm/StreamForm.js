@@ -3,6 +3,9 @@ import React from 'react';
 import { reduxForm, Fields } from 'redux-form';
 import PropTypes from 'prop-types';
 
+/* --- utils --- */
+import history from '../../../utils/history/history';
+
 /* --- components --- */
 import FieldErrorMessage from '../../UI/FieldErrorMessage/FieldErrorMessage';
 import { Form, Button, Icon } from 'semantic-ui-react';
@@ -61,16 +64,28 @@ const StreamForm = props => {
     props.onSubmit(formValues);
   };
 
+  const onCancel = () => {
+    // navigate back to previous page.
+    history.goBack();
+  };
+
   return (
     <Form
-      onSubmit={props.handleSubmit(onSubmit)}
       inverted
+      onSubmit={props.handleSubmit(onSubmit)}
       className="stream-form"
     >
       <Fields
         names={['title', 'description', 'terms']}
         component={renderInput}
       />
+
+      <Button onClick={onCancel} animated color="grey">
+        <Button.Content visible>Cancel</Button.Content>
+        <Button.Content hidden>
+          <Icon name="arrow left" />
+        </Button.Content>
+      </Button>
 
       <Button type="submit" animated className="btn-submit primary">
         <Button.Content visible>Save</Button.Content>

@@ -21,7 +21,8 @@ class StreamList extends Component {
   }
   renderControls = stream => {
     const { auth } = this.props;
-    if (auth.isSignedIn && auth.user.id === stream.user.id) {
+    if (!auth.isSignedIn || !stream.user) return null;
+    if (auth.user.id === stream.user.id) {
       return (
         <div className="stream-controls">
           <Link to={`/streams/edit/${stream.id}`} className="btn-stream-edit">

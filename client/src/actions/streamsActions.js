@@ -28,15 +28,12 @@ export const createStream = formValues => async (dispatch, getState) => {
     payload: response.data,
   });
 
-  // Do some programmatic navigatio to
-  // get the user back to the root route
-  history.push('/streams');
+  // navigate back to the root route
+  history.push('/');
 };
 
-export const editStream = (id, formValues) => async (dispatch, getState) => {
-  const { user } = getState().auth;
-
-  const response = await streams.put(`/streams/${id}`, { ...formValues, user });
+export const editStream = (id, formValues) => async dispatch => {
+  const response = await streams.patch(`/streams/${id}`, formValues);
 
   dispatch({
     type: streamsTypes.EDIT_STREAM,
@@ -44,7 +41,7 @@ export const editStream = (id, formValues) => async (dispatch, getState) => {
   });
 
   // navigate back to the root route
-  history.push('/streams');
+  history.push('/');
 };
 
 export const deleteStream = id => async dispatch => {

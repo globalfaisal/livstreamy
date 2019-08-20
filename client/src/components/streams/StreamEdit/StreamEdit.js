@@ -8,29 +8,36 @@ import { editStream, fetchStream } from '../../../actions/streamsActions';
 
 /* --- components --- */
 import StreamForm from '../StreamForm/StreamForm';
+import Loading from '../../UI/Loading/Loading';
+
+/* --- helpers --- */
+import history from '../../../utils/history/history';
 
 /* --- styles --- */
 import './StreamEdit.scss';
-import Loading from '../../UI/Loading/Loading';
 
 class StreamEdit extends React.Component {
   componentDidMount() {
     this.props.fetchStream(this.props.match.params.id);
+    this.checkAuthorizedAccess();
   }
 
-  //TODO: NAVIGATE AWAY FROM THIS PAGE IF THE USER ID ISN'T THE ONE IN THE STREAM.
+  checkAuthorizedAccess = () => {
+    const { currentUser, stream } = this.props;
+    // Navigate away from this component
+    // if the user is not the owner
+    if (currentUser.id !== stream.user.id) history.push('/streams');
+  };
 
   onSubmit = formValues => {
-    const {
-      stream: { id },
-    } = this.props;
-    // dispatch the form data
+    const { id } = this.props.match.params;
     this.props.editStream(id, formValues);
   };
 
-  render() {
+  renderContent = () => {
     const { stream } = this.props;
     if (!stream) return <Loading message="Please wait!" />;
+
     return (
       <div className="stream-edit ui container">
         <section className="intro-section">
@@ -39,19 +46,26 @@ class StreamEdit extends React.Component {
         <section className="form-section">
           <StreamForm
             onSubmit={this.onSubmit}
-            // reduxForm speacial prop.
+            // reduxForm special prop.
             initialValues={_.pick(this.props.stream, 'title', 'description')}
           />
         </section>
       </div>
     );
+  };
+
+  render() {
+    return this.renderContent();
   }
 }
 
 const mapDispatchToProps = { editStream, fetchStream };
 
 const mapStateToProps = (state, ownProps) => {
-  return { stream: state.streams[ownProps.match.params.id] };
+  return {
+    currentUser: state.auth.user,
+    stream: state.streams[ownProps.match.params.id],
+  };
 };
 
 export default connect(
