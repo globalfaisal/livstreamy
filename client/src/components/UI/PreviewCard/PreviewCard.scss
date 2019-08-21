@@ -28,6 +28,7 @@
 			.meta-header {
 				display: flex;
 				justify-content: space-between;
+				margin-bottom: 20px;
 				.profile {
 					padding: 0 3px;
 					border: 0;
@@ -35,7 +36,8 @@
 				}
 				.stream-controls {
 					button {
-						padding: 5px;
+						padding: 6px;
+						margin-top: 6px;
 					}
 					.icon {
 						.edit {

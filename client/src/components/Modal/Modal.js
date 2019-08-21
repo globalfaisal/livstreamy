@@ -19,17 +19,28 @@ class Modal extends Component {
   }
 
   render() {
-    const { isOpen, content, size } = this.props;
+    const {
+      isModalOpen,
+      onDismiss,
+      header,
+      content,
+      actions,
+      size,
+      dimmer,
+    } = this.props;
+
     return (
       <Portal>
         <SModal
           color="black"
-          open={isOpen}
-          closeOnDimmerClick={true}
-          closeOnEscape={true}
-          size={size || 'large'}
+          open={isModalOpen}
+          onClose={onDismiss}
+          size={size || 'small'}
+          dimmer={dimmer || true}
         >
+          {header && <SModal.Header>{header}</SModal.Header>}
           <SModal.Content>{content}</SModal.Content>
+          {actions && <SModal.Actions>{actions}</SModal.Actions>}
         </SModal>
       </Portal>
     );
@@ -37,11 +48,15 @@ class Modal extends Component {
 }
 
 Modal.propTypes = {
+  header: PropTypes.element,
   content: PropTypes.element.isRequired,
+  actions: PropTypes.element,
+  onDismiss: PropTypes.func,
   size: PropTypes.string,
+  dimmer: PropTypes.string,
 };
 
-const mapStateToProps = state => ({ isOpen: state.modal.isOpen });
+const mapStateToProps = state => ({ isModalOpen: state.isModalOpen });
 const mapDispatchToProps = { openModal, closeModal };
 
 export default connect(

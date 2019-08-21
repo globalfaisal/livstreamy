@@ -9,5 +9,5 @@ export default combineReducers({
   auth: authReducer,
   streams: streamsReducer,
   form: formReducer,
-  modal: modalReducer,
+  isModalOpen: modalReducer,
 });

@@ -10,54 +10,68 @@ import history from '../../../utils/history/history';
 import FieldErrorMessage from '../../UI/FieldErrorMessage/FieldErrorMessage';
 import { Form, Button, Icon } from 'semantic-ui-react';
 
+const renderFieldError = ({ touched, error, active }) => {
+  return touched && error && !active && <FieldErrorMessage message={error} />;
+};
+
+const renderInput = ({ title, description, terms }) => (
+  <React.Fragment>
+    <Form.Input
+      {...title.input}
+      required
+      label="Title"
+      placeholder="Ask me anything!"
+      className={`${
+        title.meta.touched && title.meta.error && !title.meta.active
+          ? 'error'
+          : ''
+      }`}
+    />
+    {/* {renderFieldError(title.meta)} */}
+    <Form.TextArea
+      {...description.input}
+      required
+      label="Description"
+      placeholder="Pssstttt...It's Q&A time, send your questions @twitter_handle. 👏"
+      className={`${
+        description.meta.touched &&
+        description.meta.error &&
+        !description.meta.active
+          ? 'error'
+          : ''
+      }`}
+    />
+    {renderFieldError(description.meta)}
+
+    <Form.Checkbox
+      {...terms.input}
+      label="I agree to the Terms and Conditions"
+      required
+      className={`${
+        terms.meta.touched && terms.meta.error && !description.meta.active
+          ? 'error'
+          : ''
+      }`}
+    />
+  </React.Fragment>
+);
+
+const validate = formValues => {
+  const errors = {};
+
+  if (!formValues.title) errors.title = 'Title is required ';
+
+  if (!formValues.description)
+    errors.description = 'Provide descripton for your live stream';
+
+  if (!formValues.terms) errors.terms = 'You must accept the terms!';
+
+  return errors;
+};
+
+/*--STREAMFROM COMPONENT--*/
+
 const StreamForm = props => {
-  const renderFieldError = ({ touched, error, active }) => {
-    return touched && error && !active && <FieldErrorMessage message={error} />;
-  };
-
-  const renderInput = ({ title, description, terms }) => (
-    <React.Fragment>
-      <Form.Input
-        {...title.input}
-        required
-        autoComplete="off"
-        label="Title"
-        placeholder="Ask me anything!"
-        className={`${
-          title.meta.touched && title.meta.error && !title.meta.active
-            ? 'error'
-            : ''
-        }`}
-      />
-      {renderFieldError(title.meta)}
-      <Form.TextArea
-        {...description.input}
-        required
-        label="Description"
-        placeholder="Pssstttt...It's Q&A time, send your questions @twitter_handle. 👏"
-        className={`${
-          description.meta.touched &&
-          description.meta.error &&
-          !description.meta.active
-            ? 'error'
-            : ''
-        }`}
-      />
-      {renderFieldError(description.meta)}
-
-      <Form.Checkbox
-        {...terms.input}
-        label="I agree to the Terms and Conditions"
-        required
-        className={`${
-          terms.meta.touched && terms.meta.error && !description.meta.active
-            ? 'error'
-            : ''
-        }`}
-      />
-    </React.Fragment>
-  );
-
   const onSubmit = formValues => {
     // check that values are not only white space
     if (!formValues.title.trim() || !formValues.description.trim()) return;
@@ -100,19 +114,6 @@ const StreamForm = props => {
 StreamForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   initialValues: PropTypes.object,
-};
-
-const validate = formValues => {
-  const errors = {};
-
-  if (!formValues.title) errors.title = 'Title is required ';
-
-  if (!formValues.description)
-    errors.description = 'Provide descripton for your live stream';
-
-  if (!formValues.terms) errors.terms = 'You must accept the terms!';
-
-  return errors;
 };
 
 export default reduxForm({

@@ -1,4 +1,4 @@
-.stream-delete {
+.stream-delete-content {
 	display: flex;
 	width: 480px;
 	align-items: center;
@@ -11,21 +11,14 @@
 			height: 100%;
 		}
 	}
-	& > .content {
+	& > .message {
 		margin-left: 20px;
 		h3 {
 			margin-bottom: 0;
 		}
 		p {
 			font-weight: 600;
-			color: var(--color-lightblue);
-		}
-		.actions {
-			margin-top: 30px;
-			.btn-delete {
-				background: var(--color-danger);
-				color: #fff;
-			}
+			color: var(--color-danger);
 		}
 	}
 }

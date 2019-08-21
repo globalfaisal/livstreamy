@@ -19,14 +19,17 @@ import './StreamEdit.scss';
 class StreamEdit extends React.Component {
   componentDidMount() {
     this.props.fetchStream(this.props.match.params.id);
-    this.checkAuthorizedAccess();
+    this.preventUnAuthorizedDelete();
   }
 
-  checkAuthorizedAccess = () => {
-    const { currentUser, stream } = this.props;
-    // Navigate away from this component
-    // if the user is not the owner
-    if (currentUser.id !== stream.user.id) history.push('/streams');
+  preventUnAuthorizedDelete = () => {
+    const { currentUser, currentStream } = this.props;
+    // navigate away if the user isn't the creator of the stream.
+    if (!currentUser || !currentStream) {
+      history.push('/streams');
+      return null;
+    }
+    if (currentUser.id !== currentStream.user.id) history.push('/streams');
   };
 
   onSubmit = formValues => {
@@ -35,8 +38,8 @@ class StreamEdit extends React.Component {
   };
 
   renderContent = () => {
-    const { stream } = this.props;
-    if (!stream) return <Loading message="Please wait!" />;
+    const { currentStream } = this.props;
+    if (!currentStream) return <Loading message="Please wait!" />;
 
     return (
       <div className="stream-edit ui container">
@@ -47,7 +50,11 @@ class StreamEdit extends React.Component {
           <StreamForm
             onSubmit={this.onSubmit}
             // reduxForm special prop.
-            initialValues={_.pick(this.props.stream, 'title', 'description')}
+            initialValues={_.pick(
+              this.props.currentStream,
+              'title',
+              'description'
+            )}
           />
         </section>
       </div>
@@ -64,7 +71,7 @@ const mapDispatchToProps = { editStream, fetchStream };
 const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.auth.user,
-    stream: state.streams[ownProps.match.params.id],
+    currentStream: state.streams[ownProps.match.params.id],
   };
 };
 

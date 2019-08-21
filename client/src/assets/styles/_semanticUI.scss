@@ -6,7 +6,7 @@
 		border-radius: 0 !important;
 	}
 
-	button {
+	.button {
 		border-radius: 0 !important;
 		font-weight: var(--font-weight-medium) !important;
 		&.primary {
@@ -15,5 +15,14 @@
 				background: #08daac !important;
 			}
 		}
+		&.negative {
+			background: #c24729 !important;
+			&:hover {
+				background: #b13d21 !important;
+			}
+		}
+	}
+	.modal {
+		border-radius: 0;
 	}
 }
