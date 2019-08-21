@@ -1,3 +1,40 @@
 {
-  "streams": []
+  "streams": [
+    {
+      "title": "Discover the blockchain world!",
+      "description": "Blockchain thought some robust smart contract in a algorithm! Since OmiseGo bought few double spend",
+      "terms": true,
+      "user": {
+        "id": "107112754918219438542",
+        "name": "Faisal Sanyo",
+        "email": "faiz.sanyo@gmail.com",
+        "imageUrl": "https://lh3.googleusercontent.com/a-/AAuE7mAKPklyKjgF2FIc6zEw6mQv9uo3Vsn_TyWZj6ps9Q=s96-c"
+      },
+      "id": 1
+    },
+    {
+      "title": "Heading  down to the farm 🍅",
+      "description": "Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion",
+      "terms": true,
+      "user": {
+        "id": "114074682537254222269",
+        "name": "Faisal M.",
+        "email": "mr.faisalmohamoud@gmail.com",
+        "imageUrl": "https://lh3.googleusercontent.com/-gPxr28nYdbk/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3re8XY8OIpg8QKA3V4houaLcjJNYlA/s96-c/photo.jpg"
+      },
+      "id": 2
+    },
+    {
+      "title": "Explore the far reaches of the galaxy 🛰",
+      "description": "Busey ipsum dolor sit amet. These kind of things only happen for the first time once",
+      "terms": true,
+      "user": {
+        "id": "116239066367679609730",
+        "name": "Faisal M.",
+        "email": "faisal.mohamoud89@gmail.com",
+        "imageUrl": "https://lh6.googleusercontent.com/-ka_Ea2z5sMw/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rd5iTpy5PvY1Dhvn7wE6efy0pT-1w/s96-c/photo.jpg"
+      },
+      "id": 3
+    }
+  ]
 }

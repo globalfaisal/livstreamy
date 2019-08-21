@@ -1,6 +1,6 @@
 header {
 	height: 50px;
-	padding: 0 0 0 20px;
+	padding: 0 20px;
 	background: var(--color-dimgrey);
 
 	nav.navbar {
@@ -15,30 +15,38 @@ header {
 		height: 100%;
 		flex: 1;
 		display: flex;
-		justify-content: flex-end;
+		justify-content: space-between;
 		margin: 0 40px;
-		a.nav-link {
+		.left,
+		.right {
 			display: flex;
 			align-items: center;
 			margin-bottom: -1px;
+		}
+		a.nav-link {
+			display: flex;
+			align-items: center;
+			height: 100%;
 			color: var(--color-secondary);
 			font-family: var(--font-family-header);
-			font-weight: var(--font-weight-light);
+			font-weight: var(--font-weight-regular);
 			letter-spacing: 0;
 			border-bottom: 2px solid transparent;
 			transition: all 0.28s ease-in-out;
 			&:not(:first-child) {
 				margin-left: 16px;
 			}
-			&:hover {
-				color: var(--color-lightblue);
-				border-color: var(--color-lightblue);
-			}
-			&.left {
-				margin-right: auto;
-			}
+		}
+
+		a.nav-link.selected:not(:hover) {
+			color: var(--color-lightblue);
+		}
+		a.nav-link:hover {
+			color: var(--color-lightblue);
+			border-color: var(--color-lightblue);
 		}
 	}
+
 	.brand {
 		max-width: 200px;
 		margin-right: auto;

@@ -8,17 +8,19 @@ import { fetchStreams } from '../../../actions/streamsActions';
 
 /* --- components --- */
 import PreviewCard from '../../UI/PreviewCard/PreviewCard';
-import Profile from '../../Profile/Profile';
+import Avatar from '../../Avatar/Avatar';
 import { Button } from 'semantic-ui-react';
 
 import vidPlaceholder from '../../../assets/images/video-placeholder.jpeg';
 /* --- styles --- */
 import './StreamList.scss';
+import EmptyPage from '../../UI/EmptyPage/EmptyPage';
 
 class StreamList extends Component {
   componentDidMount() {
     this.props.fetchStreams();
   }
+
   renderControls = stream => {
     const { auth } = this.props;
     if (!auth.isSignedIn || !stream.user) return null;
@@ -41,7 +43,13 @@ class StreamList extends Component {
 
   renderList = () => {
     const { streams } = this.props;
-    if (streams.length === 0) return null;
+    if (streams.length === 0)
+      return (
+        <EmptyPage
+          title="No live streams currently available!"
+          extra="Please check back later."
+        />
+      );
     return (
       <ul className="stream-list container">
         {streams.map(stream => (
@@ -50,7 +58,7 @@ class StreamList extends Component {
               thumbnail={vidPlaceholder}
               title={stream.title}
               description={stream.description}
-              channel={<Profile user={stream.user} />}
+              channel={<Avatar user={stream.user} showName={true} />}
               actions={this.renderControls(stream)}
             />
           </li>

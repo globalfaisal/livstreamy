@@ -1,0 +1,16 @@
+.avatar {
+	max-width: 200px;
+	display: flex;
+	align-items: center;
+	.avatar-image {
+		width: 2em;
+		height: 2em;
+		border-radius: 50%;
+	}
+	.avatar-name {
+		margin-left: 6px;
+		color: var(--color-secondary);
+		font-weight: var(--font-weight-regular);
+		letter-spacing: 0px;
+	}
+}
