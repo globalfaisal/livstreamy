@@ -19,16 +19,18 @@ import './StreamEdit.scss';
 class StreamEdit extends React.Component {
   componentDidMount() {
     this.props.fetchStream(this.props.match.params.id);
-    this.preventUnAuthorizedDelete();
+    this.preventUnAuthorizedChanges();
   }
 
-  preventUnAuthorizedDelete = () => {
+  componentDidUpdate() {
+    this.preventUnAuthorizedChanges();
+  }
+
+  preventUnAuthorizedChanges = () => {
     const { currentUser, currentStream } = this.props;
+    if (!currentUser || !currentStream) return;
+
     // navigate away if the user isn't the creator of the stream.
-    if (!currentUser || !currentStream) {
-      history.push('/streams');
-      return null;
-    }
     if (currentUser.id !== currentStream.user.id) history.push('/streams');
   };
 

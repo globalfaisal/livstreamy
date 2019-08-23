@@ -61,7 +61,7 @@ class Header extends React.Component {
               <div className="brand-logo">
                 <img className="logo" src={logo} alt="logo" />
               </div>
-              <div className="brand-name">LivStream</div>
+              <div className="brand-name">LivStreamy</div>
             </Link>
           </div>
           <div className="nav-links">
