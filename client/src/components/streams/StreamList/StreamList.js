@@ -55,6 +55,7 @@ class StreamList extends Component {
         {streams.map(stream => (
           <li key={stream.id} className="stream-item">
             <PreviewCard
+              url={`/streams/${stream.id}`}
               thumbnail={vidPlaceholder}
               title={stream.title}
               description={stream.description}

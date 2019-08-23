@@ -50,7 +50,7 @@ class StreamDelete extends Component {
       <Button onClick={this.onDismiss} animated="vertical" color="grey">
         <Button.Content visible>Cancel</Button.Content>
         <Button.Content hidden>
-          <Icon name="close" />
+          <Icon name="arrow left" />
         </Button.Content>
       </Button>
 
@@ -62,7 +62,7 @@ class StreamDelete extends Component {
       >
         <Button.Content visible>Delete</Button.Content>
         <Button.Content hidden>
-          <Icon name="arrow right" />
+          <Icon name="trash alternate outline" />
         </Button.Content>
       </Button>
     </Fragment>

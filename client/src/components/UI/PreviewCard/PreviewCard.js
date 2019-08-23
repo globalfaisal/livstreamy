@@ -1,6 +1,7 @@
 /* --- libs --- */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 /* --- components --- */
 import { Card, Image } from 'semantic-ui-react';
@@ -13,12 +14,14 @@ const PreviewCard = props => {
     <div className="preview-card">
       <Card>
         <Card.Content>
-          <Image
-            src={props.thumbnail}
-            wrapped
-            ui={false}
-            className="card-thumbnail"
-          />
+          <Link to={props.url}>
+            <Image
+              src={props.thumbnail}
+              wrapped
+              ui={false}
+              className="card-thumbnail"
+            />
+          </Link>
         </Card.Content>
         <Card.Content className="meta">
           <div className="meta-header">

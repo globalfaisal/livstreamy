@@ -94,17 +94,17 @@ const StreamForm = props => {
         component={renderInput}
       />
 
-      <Button onClick={onCancel} animated color="grey">
+      <Button onClick={onCancel} animated="vertical" color="grey">
         <Button.Content visible>Cancel</Button.Content>
         <Button.Content hidden>
           <Icon name="arrow left" />
         </Button.Content>
       </Button>
 
-      <Button type="submit" animated className="btn-submit primary">
+      <Button type="submit" animated="vertical" className="btn-submit primary">
         <Button.Content visible>Save</Button.Content>
         <Button.Content hidden>
-          <Icon name="arrow right" />
+          <Icon name="save outline" />
         </Button.Content>
       </Button>
     </Form>
